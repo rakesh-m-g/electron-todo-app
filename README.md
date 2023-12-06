@@ -6,7 +6,7 @@
 
 ### Documentation
 
-- Swagger based documentations are generated at `/docs` route (`http://localhost:2001/api/docs`)
+- Swagger based documentations are generated at `/docs` route `http://localhost:3000/api/docs`
   
 ### Packaging 
 - for windows: `npm run build:win`
