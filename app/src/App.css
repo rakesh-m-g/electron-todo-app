@@ -12,6 +12,16 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+body {
+  background: rgb(184, 54, 175);
+  background: linear-gradient(
+    129deg,
+    rgba(184, 54, 175, 1) 0%,
+    rgba(54, 57, 184, 1) 50%,
+    rgba(54, 184, 150, 1) 99%,
+    rgba(32, 176, 172, 1) 100%
+  );
+}
 
 .App-header {
   background-color: #282c34;

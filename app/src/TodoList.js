@@ -1,13 +1,14 @@
 // TodoList.js
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import TodoForm from './TodoForm';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import TodoForm from "./TodoForm";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [editedTodoId, setEditedTodoId] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [showDone, setShowDone] = useState(false);
 
   useEffect(() => {
@@ -16,10 +17,10 @@ const TodoList = () => {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/todo');
+      const response = await axios.get("http://localhost:3000/todo");
       setTodos(response.data);
     } catch (error) {
-      console.error('Error fetching todos:', error);
+      console.error("Error fetching todos:", error);
     }
   };
 
@@ -29,7 +30,7 @@ const TodoList = () => {
       fetchTodos();
       setEditedTodoId(null);
     } catch (error) {
-      console.error('Error deleting todo:', error);
+      console.error("Error deleting todo:", error);
     }
   };
 
@@ -42,13 +43,14 @@ const TodoList = () => {
       await axios.put(`http://localhost:3000/todo/${id}`, { isDone: !isDone });
       fetchTodos();
     } catch (error) {
-      console.error('Error updating todo:', error);
+      console.error("Error updating todo:", error);
     }
   };
 
-  const filteredTodos = todos.filter((todo) =>
-    todo.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-    (!showDone || !todo.isDone)
+  const filteredTodos = todos.filter(
+    (todo) =>
+      todo.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (!showDone || !todo.isDone)
   );
 
   return (
@@ -74,14 +76,14 @@ const TodoList = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-       
       </div>
 
       {filteredTodos.map((todo) => (
-        <div key={todo._id} className="d-flex justify-content-between align-items-center mt-3 border p-2">
-          {editedTodoId === todo._id ? (
-            null
-          ) : (
+        <div
+          key={todo._id}
+          className="d-flex justify-content-between align-items-center mt-3 border p-2"
+        >
+          {editedTodoId === todo._id ? null : (
             <>
               <div>
                 <input
@@ -93,10 +95,16 @@ const TodoList = () => {
                 <span>{todo.name}</span>
               </div>
               <div>
-                <button className="btn btn-danger mx-2" onClick={() => handleDelete(todo._id)}>
+                <button
+                  className="btn btn-danger mx-2"
+                  onClick={() => handleDelete(todo._id)}
+                >
                   Delete
                 </button>
-                <button className="btn btn-primary" onClick={() => handleEdit(todo._id)}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleEdit(todo._id)}
+                >
                   Edit
                 </button>
               </div>
