@@ -1,6 +1,5 @@
-// src/App.js
-import React from 'react';
-import TodoList from './TodoList';
+import React from "react";
+import TodoList from "./TodoList";
 
 function App() {
   return (
